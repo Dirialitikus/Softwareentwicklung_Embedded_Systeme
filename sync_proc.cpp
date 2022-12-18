@@ -1,6 +1,6 @@
 // File     sync_proc.h
 // Version  1.0
-// Author   Jens-Peter Akelbein
+// Author   Prof. Jens-Peter Akelbein and Kaan Evlende
 // Comment  Softwareentwicklung fuer Embedded Systeme - Exercise 3
 
 #include <iostream>
