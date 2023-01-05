@@ -15,12 +15,29 @@
 #include <sys/mman.h>
 #include <cstring>
 #include <pthread.h>
+#include "CCommQueue.h"
+
+#define SHM_NAME        "/estSHM"
+#define QUEUE_SIZE      1
+#define NUM_MESSAGES    10
+
+#define MESSAGE_TYPE_REQUEST 1
+#define MESSAGE_TYPE_RESPONSE 2
+
+struct PackedData {
+    Motion_t motion;
+    UInt64 time;
+};
+typedef struct PackedData PackedData_t;
+
 
 using namespace std;
 Motion* motion;
 
 CSensorTag tag;
 Motion k;
+
+pthread_mutex_t mut;
 
 uint dataLaps = 100;
 #define NUMBER_OF_THREADS  2
@@ -41,6 +58,7 @@ int counter = 0;
 
 unsigned int m_size;
 int shm_fd;
+int shm_fd_ipc;
 
 const char sem_name1[] = "/semaphore";
 const char sem_name2[] = "/state";
@@ -64,8 +82,9 @@ void* fillWithData(void* motion){
     CSensorTag* t = mt->tag;
 
     for(u_int i = 0; i<NUMBER_OF_LOOPS; i++) {
-        pthread_mutex_lock(&mutex);
+
         while(true) {
+            pthread_mutex_lock(&mutex);
             if (!threadLock) {
                 auto start = std::chrono::high_resolution_clock::now();
                 *m = t->getMotion();
@@ -92,8 +111,9 @@ void* fillWithZero(void* motion){
     Motion_t* mot = (Motion_t*) motion;
 
     for(u_int i = 0; i<NUMBER_OF_LOOPS; i++) {
-        pthread_mutex_lock(&mutex);
+
         while(true){
+            pthread_mutex_lock(&mutex);
             if (threadLock) {
                 auto start = std::chrono::high_resolution_clock::now();
                 memset(mot, 0, sizeof(*mot));
@@ -117,13 +137,15 @@ void* fillWithZero(void* motion){
 
 void pingpong(bool parent) {
     while(counter < NUMBER_OF_LOOPS) {
+        pthread_mutex_lock(&mutex);
         if(!parent){
             //maybe do other stuff here
             semaphore.decrement();//critical area start
-            counter++;
+
             if (state.value() == STATE_ACTIVE_CHILD){
+                counter++;
                 std::cout << "Ping" << " Data From Child:"  <<
-                "Accelerometer x:" << motion->acc.x << "\tAccelerometer y:" << motion->acc.y << "\tAccelerometer z:" << motion->acc.z << std::endl;
+                          "Accelerometer x:" << motion->acc.x << "\tAccelerometer y:" << motion->acc.y << "\tAccelerometer z:" << motion->acc.z << std::endl;
                 if(counter >= NUMBER_OF_LOOPS) state.increment();
                 state.increment();//switch to parent state
             }
@@ -138,12 +160,80 @@ void pingpong(bool parent) {
                 std::cout << "Pong" << std::endl;
                 state.decrement();
             }
-            if(state.value() == STATE_TERMINATE) return;
+            if(state.value() >= STATE_TERMINATE) return;
             semaphore.increment();
         }
+
+        pthread_mutex_unlock(&mutex);
     }
 }
 
+void IPC_with_shm(){
+
+    shm_fd_ipc = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
+    size_t size_of_mq = sizeof(CBinarySemaphore) + sizeof(CCommQueue);//Eventeull nicht richtig weil ich eine queue von 10 brauche
+    ftruncate(shm_fd_ipc, size_of_mq);
+    void* shm_ptr = mmap(nullptr, size_of_mq, PROT_WRITE, MAP_SHARED, shm_fd_ipc, 0);
+
+    CBinarySemaphore* semaphore = new (shm_ptr) CBinarySemaphore;
+    CCommQueue* message_queue = new (semaphore + sizeof(semaphore)) CCommQueue(QUEUE_SIZE, *semaphore);
+
+    pid_t id = fork();
+    if(id == 0){
+        //child
+        int i = 0;
+        while(i<NUM_MESSAGES){
+            CMessage m(CMessage::MessageType::Internal_App_Type);
+            PackedData_t p;
+            Motion mtt = tag.getMotion();
+            mtt.acc.x += i;
+            mtt.acc.y += i;
+            mtt.acc.z += i;
+            mtt.gyro.x += i;
+            mtt.gyro.y += i;
+            mtt.gyro.z += i;
+            p.motion = mtt;
+            p.time = std::clock();
+            m.setSenderID(getpid());
+            m.setReceiverID(getppid());
+            m.setParam1(NULL);
+            m.setParam2(NULL);
+            m.setParam3(NULL);
+            m.setParam4((Int8*)&p, sizeof(p));
+            message_queue->add(m);
+            i++;
+        }
+        semaphore->give();
+    }
+    else if(id > 0){
+        while(true){
+            semaphore->take();
+            while(message_queue->getNumOfMessages() > 0){
+                cout << std::endl << message_queue->getNumOfMessages();
+                CMessage msg;
+                message_queue->getMessage(msg);
+                PackedData_t* pd = (PackedData_t*)msg.getParam4();
+                Motion mtt = pd->motion;
+                auto a_time = pd->time;
+                auto e_time = std::clock();
+                auto time = e_time - a_time;
+                std::cout << "Message Typ:" << msg.getMessageType() << "  Message Sender:" << msg.getSenderID() << "  Receiver ID:" << msg.getReceiverID() << " ";
+
+                printAccScopeData(mtt.acc);
+                printGyroScopeData(mtt.gyro);
+                std::cout << " vebrauchte Zeit, bis Message aus der Queue gelese wurde:" << time << std::endl;
+            }
+        }
+    }
+    else{
+        //error
+    }
+
+    shmctl(shm_fd_ipc, IPC_RMID, NULL);
+    semaphore = NULL;
+    message_queue = NULL;
+
+}
 
 int execute(){
     //check if semaphores are still up, if -> unlink
@@ -163,11 +253,16 @@ int execute(){
         tag.writeMovementConfig();
         tag.disconnect();
     }
+
+    IPC_with_shm();
+
     //pThread
-    pthread_create(&filler, NULL, fillWithData, (void *)&mt);
-    pthread_create(&deleter, NULL, fillWithZero, (void*)&k);
-    pthread_join(filler, NULL);
-    pthread_join(deleter, NULL);
+    // pthread_create(&filler, NULL, fillWithData, (void *)&mt);
+    //pthread_create(&deleter, NULL, fillWithZero, (void*)&k);
+
+
+    // pthread_join(deleter, NULL);
+    //pthread_join(filler, NULL);
 
     k.acc.x = 0;
     k.acc.y = 0;
@@ -181,6 +276,7 @@ int execute(){
     int id = fork();
 
     if(id == 0){
+        sleep(1);
         pingpong(!isParent);
         std::cout << "CHILD IS EXECUTING" << std::endl;
         _exit(EXIT_SUCCESS);
