@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <sys/unistd.h>
 #include "CNamedSemaphore.h"
+#include <semaphore.h>
+
 
 void CNamedSemaphore::setErrorText(int err){
     if (err ==  ENOMEM) this->exitproc("Insufficient memory", err);

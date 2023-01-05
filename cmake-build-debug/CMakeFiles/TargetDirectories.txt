@@ -1,3 +1,3 @@
-/cygdrive/c/Users/kaane/CLionProjects/embedded_prak/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/kaane/CLionProjects/embedded_prak/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/c/Users/kaane/CLionProjects/embedded_prak/cmake-build-debug/CMakeFiles/embedded_prak.dir
+/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/CMakeFiles/embedded_prak.dir
+/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/CMakeFiles/rebuild_cache.dir

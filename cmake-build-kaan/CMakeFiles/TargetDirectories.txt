@@ -1,0 +1,3 @@
+/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-kaan/CMakeFiles/embedded_prak.dir
+/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-kaan/CMakeFiles/edit_cache.dir
+/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-kaan/CMakeFiles/rebuild_cache.dir
