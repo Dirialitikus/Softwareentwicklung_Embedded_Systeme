@@ -137,7 +137,7 @@ void* fillWithZero(void* motion){
 
 void pingpong(bool parent) {
     while(counter < NUMBER_OF_LOOPS) {
-       pthread_mutex_lock(&mutex);
+        pthread_mutex_lock(&mutex);
         if(!parent){
             //maybe do other stuff here
             semaphore.decrement();//critical area start
@@ -145,7 +145,7 @@ void pingpong(bool parent) {
             if (state.value() == STATE_ACTIVE_CHILD){
                 counter++;
                 std::cout << "Ping" << " Data From Child:"  <<
-                "Accelerometer x:" << motion->acc.x << "\tAccelerometer y:" << motion->acc.y << "\tAccelerometer z:" << motion->acc.z << std::endl;
+                          "Accelerometer x:" << motion->acc.x << "\tAccelerometer y:" << motion->acc.y << "\tAccelerometer z:" << motion->acc.z << std::endl;
                 if(counter >= NUMBER_OF_LOOPS) state.increment();
                 state.increment();//switch to parent state
             }
@@ -257,11 +257,11 @@ int execute(){
     IPC_with_shm();
 
     //pThread
-   // pthread_create(&filler, NULL, fillWithData, (void *)&mt);
+    // pthread_create(&filler, NULL, fillWithData, (void *)&mt);
     //pthread_create(&deleter, NULL, fillWithZero, (void*)&k);
 
 
-   // pthread_join(deleter, NULL);
+    // pthread_join(deleter, NULL);
     //pthread_join(filler, NULL);
 
     k.acc.x = 0;
