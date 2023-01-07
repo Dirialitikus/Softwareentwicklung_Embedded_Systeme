@@ -18,8 +18,8 @@
 #include "CCommQueue.h"
 
 #define SHM_NAME        "/estSHM"
-#define QUEUE_SIZE      1
-#define NUM_MESSAGES    10
+#define QUEUE_SIZE      2
+#define NUM_MESSAGES    500
 
 #define MESSAGE_TYPE_REQUEST 1
 #define MESSAGE_TYPE_RESPONSE 2
@@ -180,6 +180,7 @@ void IPC_with_shm(){
 
     pid_t id = fork();
     if(id == 0){
+        std::cout << "CHILD IS RUNNING" << std::endl;
         //child
         int i = 0;
         while(i<NUM_MESSAGES){
@@ -196,17 +197,22 @@ void IPC_with_shm(){
             p.time = std::clock();
             m.setSenderID(getpid());
             m.setReceiverID(getppid());
-            m.setParam1(NULL);
+/*          m.setParam1(NULL);
             m.setParam2(NULL);
             m.setParam3(NULL);
-            m.setParam4((Int8*)&p, sizeof(p));
+*/          m.setParam4((Int8*)&p, sizeof(p));
             message_queue->add(m);
             i++;
         }
         semaphore->give();
+
+        std::cout << "CHILD IS EXECUTING" << std::endl;
+        _exit(EXIT_SUCCESS);
     }
     else if(id > 0){
-        while(true){
+        std::cout << "PARENT IS RUNNING" << std::endl;
+        int i = 0;
+        while(i<NUM_MESSAGES){
             semaphore->take();
             while(message_queue->getNumOfMessages() > 0){
                 cout << std::endl << message_queue->getNumOfMessages();
@@ -222,11 +228,15 @@ void IPC_with_shm(){
                 printAccScopeData(mtt.acc);
                 printGyroScopeData(mtt.gyro);
                 std::cout << " vebrauchte Zeit, bis Message aus der Queue gelese wurde:" << time << std::endl;
+                i++;
             }
         }
+        int status;
+        wait(&status);
+
     }
     else{
-        //error
+        std::cerr << "Fork didnt work" << std::endl;
     }
 
     shmctl(shm_fd_ipc, IPC_RMID, NULL);
@@ -254,7 +264,6 @@ int execute(){
         tag.disconnect();
     }
 
-    IPC_with_shm();
 
     //pThread
     // pthread_create(&filler, NULL, fillWithData, (void *)&mt);
@@ -280,15 +289,16 @@ int execute(){
         pingpong(!isParent);
         std::cout << "CHILD IS EXECUTING" << std::endl;
         _exit(EXIT_SUCCESS);
-    }else{
+    }else if (id > 0){
         pingpong(isParent);
         int status;
         wait(&status);
         std::cout << "PARENT IS EXECUTING" << std::endl;
-        exit(EXIT_SUCCESS);
+        //exit(EXIT_SUCCESS);
     }
-
-    return 0;
+    else{
+        std::cerr << "Fork didnt work" << std::endl;
+    }
 }
 
 void printGyroScopeData(Gyroscope m){
@@ -300,8 +310,10 @@ void printAccScopeData(Accelerometer s){
 }
 
 int main() {
-    execute();
+    //execute();
+    IPC_with_shm();
 
+    std::cout << "Parent process still alive" << std::endl;
     return 0;
 }
 
