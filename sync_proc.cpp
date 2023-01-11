@@ -16,11 +16,13 @@
 #include <cstring>
 #include <pthread.h>
 #include "CCommQueue.h"
+#include <arpa/inet.h>
 
 #define SHM_NAME        "/estSHM"
 #define QUEUE_SIZE      2
 #define NUM_MESSAGES    500
-
+#define NUMBER_OF_LOOPS 5
+#define NUMBER_OF_THREADS  2
 #define MESSAGE_TYPE_REQUEST 1
 #define MESSAGE_TYPE_RESPONSE 2
 
@@ -30,20 +32,10 @@ struct PackedData {
 };
 typedef struct PackedData PackedData_t;
 
-
-using namespace std;
-Motion* motion;
-
-CSensorTag tag;
-Motion k;
-
-pthread_mutex_t mut;
-
-uint dataLaps = 100;
-#define NUMBER_OF_THREADS  2
-pthread_mutex_t mutex;
-pthread_t filler, deleter;
-bool threadLock = false;
+struct MT{
+    Motion_t* motion;
+    CSensorTag* tag;
+};
 
 // valid states for our two processes, we use the impicit ordering of values
 // by an enum starting with the value 1
@@ -53,7 +45,15 @@ enum EProc_State {
     STATE_TERMINATE
 };
 
-#define NUMBER_OF_LOOPS 5
+Motion* motion;
+CSensorTag tag;
+Motion k;
+
+pthread_mutex_t mut;
+pthread_mutex_t mutex;
+pthread_t filler, deleter;
+uint dataLaps = 100;
+bool threadLock = false;
 int counter = 0;
 
 unsigned int m_size;
@@ -66,15 +66,26 @@ const char sem_name2[] = "/state";
 CNamedSemaphore semaphore(sem_name1, 1);
 CNamedSemaphore state(sem_name2, STATE_ACTIVE_CHILD);
 
-
 void printAccScopeData(Accelerometer s);
 void printGyroScopeData(Gyroscope m);
 
-struct MT{
-    Motion_t* motion;
-    CSensorTag* tag;
-};
-
+//Funktioniert nur mit flots die 32Bit haben
+float ntohf(uint32_t net32){
+    union {
+        float f;
+        uint32_t u;
+    } value;
+    value.u = ntohl(net32);
+    return value.f;
+}
+float htonf(uint32_t net32){
+    union {
+        float f;
+        uint32_t u;
+    } value;
+    value.u = htonl(net32);
+    return value.f;
+}
 
 void* fillWithData(void* motion){
     MT* mt = (MT*) motion;
@@ -133,7 +144,6 @@ void* fillWithZero(void* motion){
     }
     return 0;
 }
-
 
 void pingpong(bool parent) {
     while(counter < NUMBER_OF_LOOPS) {

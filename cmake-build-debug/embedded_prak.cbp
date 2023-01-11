@@ -8,114 +8,136 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="embedded_prak">
-				<Option output="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/embedded_prak" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 embedded_prak"/>
-					<CompileFile command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="embedded_prak/fast">
-				<Option output="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/embedded_prak" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 embedded_prak/fast"/>
-					<CompileFile command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j5 -f &quot;/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="embedded_prak">
+				<Option output="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/embedded_prak.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 embedded_prak"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="embedded_prak/fast">
+				<Option output="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/embedded_prak.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/11/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 embedded_prak/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/CNamedSemaphore.cpp">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/CBinarySemaphore.cpp">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/CNamedSemaphore.h">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/CBinarySemaphore.h">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/Motion.h">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/CCommQueue.cpp">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorCommunication.cpp">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/CCommQueue.h">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorCommunication.h">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/CMessage.h">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorConfiguration.cpp">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/CNamedSemaphore.cpp">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorConfiguration.h">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/CNamedSemaphore.h">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorTag.cpp">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/FWAssertion.h">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorTag.h">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/Global.h">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/m_pThread.cpp">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/IMessageHandler.h">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/sync_proc.cpp">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/Motion.h">
 			<Option target="embedded_prak"/>
 		</Unit>
-		<Unit filename="/home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/CMakeLists.txt">
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorCommunication.cpp">
+			<Option target="embedded_prak"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorCommunication.h">
+			<Option target="embedded_prak"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorConfiguration.cpp">
+			<Option target="embedded_prak"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorConfiguration.h">
+			<Option target="embedded_prak"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorTag.cpp">
+			<Option target="embedded_prak"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/SensorTag.h">
+			<Option target="embedded_prak"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/SensorTag/m_pThread.cpp">
+			<Option target="embedded_prak"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/sync_proc.cpp">
+			<Option target="embedded_prak"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/kaane/CLionProjects/Softwareentwicklung_Embedded_Systeme/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

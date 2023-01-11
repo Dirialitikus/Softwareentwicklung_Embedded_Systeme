@@ -1,4 +1,0 @@
-/opt/clion-2022.3.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme -B /home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: /home/fs/CLionProjects/Softwareentwicklung_Embedded_Systeme/cmake-build-debug
