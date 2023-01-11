@@ -225,7 +225,7 @@ void IPC_with_shm(){
         while(i<NUM_MESSAGES){
             semaphore->take();
             while(message_queue->getNumOfMessages() > 0){
-                cout << std::endl << message_queue->getNumOfMessages();
+                std::cout << std::endl << message_queue->getNumOfMessages();
                 CMessage msg;
                 message_queue->getMessage(msg);
                 PackedData_t* pd = (PackedData_t*)msg.getParam4();
